@@ -12,6 +12,13 @@
   color: rgb(46, 46, 46);
 }
 
+.App-header-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .App-header-container {
   display: flex;
   flex-direction: row;

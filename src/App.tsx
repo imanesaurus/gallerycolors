@@ -1,5 +1,15 @@
 import React from "react";
 import "./App.css";
+import Select from "./components/Select";
+import {
+  RED,
+  YELLOW,
+  BLUE,
+  GRAY,
+  PURPLE,
+  PINK,
+  OTHER,
+} from "./components/Select";
 
 const width = window.innerWidth;
 const height = window.innerHeight;
@@ -7,6 +17,7 @@ const MARGIN = 20;
 
 function App() {
   const [colors, setColor] = React.useState([""]);
+  const [category, setCategory] = React.useState("");
 
   function exportColor() {
     let colorArray = [];
@@ -23,11 +34,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="App-text">
-          <p>Gallery App</p>
+        <p>Gallery App</p>
+        <div
+          className="App-header-box"
+          style={{ marginLeft: MARGIN, marginBottom: MARGIN / 4 }}
+        >
+          <Select value={category} onChange={handleOnChange} />
+          {category}
+          <div />
         </div>
         <div className="App-header-container">
-          {colors.map((color) => {
+          {colors.map((color, index) => {
             return (
               <div className="App-color-components">
                 <div
@@ -59,7 +76,7 @@ const styles = {
   image: {
     marginHorizontal: MARGIN,
     width: width / 5 - MARGIN,
-    height: height / 9 - MARGIN / 4,
+    height: height / 9 - (MARGIN / 4) * 1.5,
   },
 };
 
