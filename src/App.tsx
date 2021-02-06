@@ -19,6 +19,23 @@ function App() {
   const [colors, setColor] = React.useState([""]);
   const [category, setCategory] = React.useState("");
 
+  // Nedd workaround. still can't make proper color filtering.
+  function handleOnChange(event: any) {
+    const _value = event.target.value;
+    function checkRed(x: any) {
+      let r = x < 255;
+      let g = x < 255 / 2;
+      let b = x < 255 / 2;
+      console.log("this b", b);
+      return `rgb(${r.toString()},${g.toString()},${b.toString()})`;
+    }
+    if (_value === RED) {
+      const filteredColors = colors.filter((c) => c.includes(checkRed(255)));
+      setColor(filteredColors);
+    }
+    setCategory(event.target.value);
+  }
+
   function exportColor() {
     let colorArray = [];
     for (let c = 0; c < 40; c++) {
